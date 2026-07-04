@@ -1,0 +1,29 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include "Game.h"
+
+namespace Roguelike {
+
+	class Application
+	{
+	public:
+		Application(const Application& app) = delete;
+		Application& operator= (const Application&) = delete;
+
+		static Application& Instance();
+
+		void Run();
+
+		Game& GetGame() { return game; }
+		sf::RenderWindow& GetWindow() { return window; }
+
+	private:
+		Application();
+		~Application() = default;
+
+	private:
+		Game game;
+		sf::RenderWindow window;
+	};
+
+}
